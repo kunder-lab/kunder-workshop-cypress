@@ -10,3 +10,5 @@ ionic serve
 ```
 npm run cypress:open
 ```
+
+The tests for this workshop are in `cypress/integration/todos.js`
