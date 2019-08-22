@@ -24,30 +24,35 @@ export class UpdateItemPage implements OnInit {
     this.route.params.subscribe(
       data => {
         this.item = this.itemService.getItemById(data.id)[0];
-        //if item is undefined, go back to home
-        if(!this.item){
+        // if item is undefined, go back to home
+        if (!this.item) {
           this.goBack();
-        } else{
+        } else {
           this.edit_item_form = this.formBuilder.group({
             title: new FormControl(this.item.title, Validators.required),
             description: new FormControl(this.item.description, Validators.required)
           });
         }
       }
-    )
+    );
   }
 
-  goBack(){
+  goBack() {
     this.router.navigate(['/home']);
   }
 
-  updateItem(value){
-    let newValues = {
+  updateItem(value) {
+    const newValues = {
       id: this.item.id,
       title: value.title,
       description: value.description
-    }
+    };
     this.itemService.updateItem(newValues);
+    this.goBack();
+  }
+
+  deleteItem() {
+    this.itemService.deleteItem(this.item.id);
     this.goBack();
   }
 

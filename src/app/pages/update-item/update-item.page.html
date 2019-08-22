@@ -19,4 +19,5 @@
     </ion-item>
     <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!edit_item_form.valid">Update</ion-button>
   </form>
+  <ion-button class="submit-btn" expand="block" (click)="deleteItem()" [disabled]="!edit_item_form.valid">Delete</ion-button>
 </ion-content>
